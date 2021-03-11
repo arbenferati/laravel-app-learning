@@ -16,21 +16,23 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-900">
-            @include('layouts.navigation')
+    <body class="bg-gray-900 text-gray-500 min-h-screen p-6 flex flex-col justify-between items-center">
 
-            <!-- Page Heading -->
-            <header class="bg-white shadow">
-                <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                    {{ $header }}
-                </div>
-            </header>
-
-            <!-- Page Content -->
-            <main>
+        @include('layouts.partials.navigation')
+    
+        <main class="w-screen flex-grow flex flex-row">
+    
+            @include('layouts.partials.sidebar')
+    
+            <div class="flex-grow p-6 bg-gray-50 rounded-l-2xl flex flex-wrap flex-row justify-around">
+    
                 {{ $slot }}
-            </main>
-        </div>
+    
+            </div>
+    
+        </main>
+    
+        @include('layouts.partials.footer')
+    
     </body>
 </html>
