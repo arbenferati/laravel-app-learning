@@ -1,5 +1,5 @@
 <header class="flex flex-row justify-between w-screen px-10 mb-6">
-    <a href="{{ url('/') }}" class="hover:text-gray-300 font-bold text-2xl">MYAPPS</a>
+    <a href="{{ url('/') }}" class="hover:text-gray-300 font-bold text-2xl transition duration-150 ease-in-out">MYAPPS</a>
     <nav class="flex flex-row">
         <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
             {{ __('Home') }}
