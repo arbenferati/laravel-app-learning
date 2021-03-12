@@ -16,9 +16,23 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
-        </div>
+    <body class="bg-gray-900 text-gray-500 min-h-screen p-6 flex flex-col justify-between items-center">
+
+        @include('layouts.partials.navigation')
+    
+        <main class="w-screen flex-grow flex flex-row">
+    
+            @include('layouts.partials.sidebar')
+    
+            <div class="flex-grow p-6 bg-gray-50 rounded-l-2xl flex flex-wrap flex-row justify-around">
+    
+                {{ $slot }}
+    
+            </div>
+    
+        </main>
+    
+        @include('layouts.partials.footer')
+    
     </body>
 </html>
