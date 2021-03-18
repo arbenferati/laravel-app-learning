@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\HomeController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
@@ -16,6 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'ShowHome'])->name('home');
+
+Route::get('/manage-applications', [ApplicationController::class, 'ManageApps'])->name('app_management');
+Route::get('/app/edit/{id}', [ApplicationController::class, 'EditApp']);
 
 Route::get('/about', function () {
     return view('pages.about');

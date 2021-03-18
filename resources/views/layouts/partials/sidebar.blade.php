@@ -13,6 +13,9 @@
                 <x-sidebar-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-sidebar-nav-link>
+                <x-sidebar-nav-link :href="route('app_management')" :active="request()->routeIs('app_management')">
+                    {{ __('Manage apps') }}
+                </x-sidebar-nav-link>
                 <x-sidebar-nav-link :href="route('logout')"
                         onclick="event.preventDefault();
                                     this.closest('form').submit();">
