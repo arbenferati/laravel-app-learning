@@ -1,4 +1,4 @@
-<div class="w-64 flex-none p-2 flex flex-col @auth items-center @endauth">
+<div class="w-64 flex-none p-2 flex flex-col items-center">
     @auth
         <img src="{{ asset('/images/profile.jpg') }}" alt="profile_image" class="rounded-full h-24 border-2 border-indigo-900 shadow-md">
 
@@ -7,21 +7,27 @@
         <!-- Settings Dropdown -->
         <h1 class="text-xl font-semibold text-indigo-500 mt-2 my-4">{{ Auth::user()->name }}</h1>
 
-        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-            {{ __('Dashboard') }}
-        </x-nav-link>
-        <form method="POST" action="{{ route('logout') }}">
+        <form method="POST" action="{{ route('logout') }}" class="min-w-full">
             @csrf
-            <x-nav-link :href="route('logout')"
-                    onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                {{ __('Disconnect') }}
-            </x-nav-link>
+            <div class="flex flex-col">
+                <x-sidebar-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-sidebar-nav-link>
+                <x-sidebar-nav-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                    {{ __('Disconnect') }}
+                </x-sidebar-nav-link>
+            </div>
         </form>
     @else
-        <a href="{{ route('login') }}" class="ml-6 text-lg text-gray-400">Log in</a>
-        <a href="{{ route('register') }}" class="ml-6 mt-2 text-lg  text-gray-400">Register</a>
+    <x-sidebar-nav-link :href="route('login')" :active="request()->routeIs('login')">
+        {{ __('Login') }}
+    </x-sidebar-nav-link>
+    <x-sidebar-nav-link :href="route('register')" :active="request()->routeIs('register')">
+        {{ __('Register') }}
+    </x-sidebar-nav-link>
     @endauth
-    
-</div> 
+
+</div>
 

@@ -22,12 +22,12 @@ class ApplicationFactory extends Factory
      */
     public function definition()
     {
-        $rand = Str::random(10);
+        $a = $this->faker->unique()->word(2);
         return [
-            'title' => $rand,
-            'short_description' => 'A short description',//$this->faker->unique()->safeEmail,
-            'body' => Str::random(50),
-            'route' => $rand,
+            'title' => $a,
+            'short_description' => $this->faker->word(7),
+            'body' => $this->faker->paragraph(4),
+            'route' => $a,
         ];
     }
 }
