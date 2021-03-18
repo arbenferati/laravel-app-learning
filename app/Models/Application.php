@@ -15,7 +15,7 @@ class Application extends Model
      * @var array
      */
     protected $fillable = [
-        'title',
+        'app_name',
         'short_description',
         'body',
         'route',

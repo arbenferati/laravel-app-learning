@@ -11,7 +11,7 @@
                 @csrf
                 <div>
                     <x-label for="title" :value="__('Title')" />
-                    <x-input id="title_id" class="block mt-1 w-full" type="text" name="title" :value="$app->title" required autofocus />
+                    <x-input id="app_name_id" class="block mt-1 w-full" type="text" name="app_name" :value="$app->app_name" required autofocus />
                 </div>
                 <div>
                     <x-label for="short_description" :value="__('Short description')" />

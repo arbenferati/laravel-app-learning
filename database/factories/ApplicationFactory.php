@@ -22,9 +22,9 @@ class ApplicationFactory extends Factory
      */
     public function definition()
     {
-        $a = $this->faker->unique()->word(2);
+        $a = $this->faker->unique()->word(3);
         return [
-            'title' => $a,
+            'app_name' => $a,
             'short_description' => $this->faker->word(7),
             'body' => $this->faker->paragraph(4),
             'route' => $a,

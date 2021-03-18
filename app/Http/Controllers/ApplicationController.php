@@ -9,8 +9,8 @@ class ApplicationController extends Controller
 {
     public function ManageApps()
     {
-        $apps = Application::latest()->paginate(100);
-        return view('pages.manage-apps', compact('apps'));
+        $apps = Application::all();
+        return view('pages.application.manage-apps', compact('apps'));
     }
 
     public function EditApp($id)
@@ -22,19 +22,19 @@ class ApplicationController extends Controller
     public function UpdateApp(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'title' => 'required|max:30',
+            'app_name' => 'required|max:30',
             'short_description' => 'required|max:60',
             'body' => 'required',
         ],[
-            'title.required' => 'Please, fill up the "Title" field !',
-            'title.max' => 'Please, less then 30 chars !',
+            'app_name.required' => 'Please, fill up the "Title" field !',
+            'app_name.max' => 'Please, less then 30 chars !',
             'short_description.required' => 'Please, fill up the "Short description" field !',
             'short_description.max' => 'Please, less then 60 chars !',
             'body.required' => 'Please, fill up the "Description" field !',
         ]);
 
         $update = Application::find($id)->update([
-          'title' => $request->title,
+          'app_name' => $request->app_name,
           'short_description' => $request->short_description,
           'body' => $request->body,
         ]);
