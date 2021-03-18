@@ -7,14 +7,16 @@
         <!-- Settings Dropdown -->
         <h1 class="text-xl font-semibold text-indigo-500 mt-2 my-4">{{ Auth::user()->name }}</h1>
 
-        <a href="{{ route('dashboard') }}" class="mb-2 hover:text-gray-300 transition duration-150 ease-in-out">Dashboard</a>
+        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            {{ __('Dashboard') }}
+        </x-nav-link>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
-            <x-responsive-nav-link :href="route('logout')"
+            <x-nav-link :href="route('logout')"
                     onclick="event.preventDefault();
                                 this.closest('form').submit();">
                 {{ __('Disconnect') }}
-            </x-responsive-nav-link>
+            </x-nav-link>
         </form>
     @else
         <a href="{{ route('login') }}" class="ml-6 text-lg text-gray-400">Log in</a>
