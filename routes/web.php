@@ -20,6 +20,7 @@ Route::get('/', [HomeController::class, 'ShowHome'])->name('home');
 
 Route::get('/manage-applications', [ApplicationController::class, 'ManageApps'])->name('app_management');
 Route::get('/app/edit/{id}', [ApplicationController::class, 'EditApp']);
+Route::post('/app/update/{id}', [ApplicationController::class, 'UpdateApp']);
 
 Route::get('/about', function () {
     return view('pages.about');
