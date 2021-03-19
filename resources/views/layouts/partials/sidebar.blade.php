@@ -1,4 +1,5 @@
 <div class="w-64 flex-none p-2 flex flex-col items-center">
+    
     @auth
         <img src="{{ asset('/images/profile.jpg') }}" alt="profile_image" class="rounded-full h-24 border-2 border-indigo-900 shadow-md">
 
@@ -10,13 +11,19 @@
         <form method="POST" action="{{ route('logout') }}" class="min-w-full">
             @csrf
             <div class="flex flex-col">
+                <x-sidebar-nav-link :href="route('home')" :active="request()->routeIs('home')" first="true">
+                    {{ __('Home') }}
+                </x-sidebar-nav-link>
                 <x-sidebar-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-sidebar-nav-link>
                 <x-sidebar-nav-link :href="route('app_management')" :active="request()->routeIs('app_management')">
                     {{ __('Manage apps') }}
                 </x-sidebar-nav-link>
-                <x-sidebar-nav-link :href="route('logout')"
+                <x-sidebar-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
+                    {{ __('Contact') }}
+                </x-sidebar-nav-link>
+                <x-sidebar-nav-link :href="route('logout')" :disconnect="true" :last="true"
                         onclick="event.preventDefault();
                                     this.closest('form').submit();">
                     {{ __('Disconnect') }}
@@ -24,11 +31,17 @@
             </div>
         </form>
     @else
+    <x-sidebar-nav-link :href="route('home')" :active="request()->routeIs('home')">
+        {{ __('Home') }}
+    </x-sidebar-nav-link>
     <x-sidebar-nav-link :href="route('login')" :active="request()->routeIs('login')">
         {{ __('Login') }}
     </x-sidebar-nav-link>
     <x-sidebar-nav-link :href="route('register')" :active="request()->routeIs('register')">
         {{ __('Register') }}
+    </x-sidebar-nav-link>
+    <x-sidebar-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
+        {{ __('Contact') }}
     </x-sidebar-nav-link>
     @endauth
 
