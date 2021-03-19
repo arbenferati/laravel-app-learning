@@ -19,6 +19,9 @@ class ApplicationController extends Controller
         return view ('pages.application.edit-app', compact('app'));
     }
 
+    /**
+     * This will validate input data and update the application corresponding to the id
+     */
     public function UpdateApp(Request $request, $id)
     {
         $validatedData = $request->validate([
@@ -39,6 +42,35 @@ class ApplicationController extends Controller
           'body' => $request->body,
         ]);
 
-        return Redirect()->route('app_management')->with('success', 'Category updated with success');
+        return Redirect()->route('app_management')->with('success', 'Application\'s information updated with success');
+    }
+
+    public function DeleteApp($id)
+    {
+        $delete = Application::find($id)->delete();
+        return Redirect()->back()->with('success', 'Category deleted with success');
+    }
+
+    public function AddApp(Request $request)
+    {
+        $validatedData = $request->validate([
+            'app_name' => 'required|max:30',
+            'short_description' => 'required|max:60',
+        ],[
+            'app_name.required' => 'Please, fill up the "Title" field !',
+            'app_name.max' => 'Please, less then 30 chars !',
+            'short_description.required' => 'Please, fill up the "Short description" field !',
+            'short_description.max' => 'Please, less then 60 chars !',
+        ]);
+
+        $app = new Application;
+        $app->app_name = $request->app_name;
+        $app->short_description = $request->short_description;
+        $app->body = 'body mobiedal';
+        $app->is_published = 1;
+        $app->route = 'app/routing';
+        $app->save();
+
+        return Redirect()->route('app_management')->with('success', 'Application added with success');
     }
 }

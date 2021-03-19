@@ -18,7 +18,7 @@
     </head>
     <body class="bg-gray-900 text-gray-500 min-h-screen p-6 flex flex-col justify-between items-center">
 
-        @include('layouts.partials.navigation')
+        @include('layouts.partials.header')
 
         <main class="w-screen flex-grow flex flex-row">
 

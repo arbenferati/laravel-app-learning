@@ -24,12 +24,13 @@
                 <x-button class="m-3">
                     {{ __('Sauver les modifications') }}
                 </x-button>
-                <a href="{{ route('app_management') }}">
-                    <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">
-                        Annuler les modificiations
-                    </button>
-                </a>
             </form>
+
+            <a href="{{ route('app_management') }}">
+                <button class="inline-flex items-center px-4 py-2 bg-red-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red-700 active:bg-red-900 focus:outline-none focus:border-red-900 focus:ring ring-red-300 disabled:opacity-25 transition ease-in-out duration-150">
+                    Annuler les modificiations
+                </button>
+            </a>
         </div>
     </x-slot>
 </x-app-layout>

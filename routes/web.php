@@ -21,18 +21,12 @@ Route::get('/', [HomeController::class, 'ShowHome'])->name('home');
 Route::get('/manage-applications', [ApplicationController::class, 'ManageApps'])->name('app_management');
 Route::get('/app/edit/{id}', [ApplicationController::class, 'EditApp']);
 Route::post('/app/update/{id}', [ApplicationController::class, 'UpdateApp']);
-
-Route::get('/about', function () {
-    return view('pages.about');
-})->name('about');
+Route::get('/app/delete/{id}', [ApplicationController::class, 'DeleteApp']);
+Route::post('/app/add', [ApplicationController::class, 'AddApp'])->name('add_new_app');
 
 Route::get('/contact', function () {
     return view('pages.contact');
 })->name('contact');
-
-Route::get('/help', function () {
-    return view('pages.help');
-})->name('help');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
