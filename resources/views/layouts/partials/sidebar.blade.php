@@ -31,7 +31,7 @@
             </div>
         </form>
     @else
-    <x-sidebar-nav-link :href="route('home')" :active="request()->routeIs('home')">
+    <x-sidebar-nav-link :href="route('home')" :active="request()->routeIs('home')" :first="true">
         {{ __('Home') }}
     </x-sidebar-nav-link>
     <x-sidebar-nav-link :href="route('login')" :active="request()->routeIs('login')">
@@ -40,7 +40,7 @@
     <x-sidebar-nav-link :href="route('register')" :active="request()->routeIs('register')">
         {{ __('Register') }}
     </x-sidebar-nav-link>
-    <x-sidebar-nav-link :href="route('contact')" :active="request()->routeIs('contact')">
+    <x-sidebar-nav-link :href="route('contact')" :active="request()->routeIs('contact')" :last="true">
         {{ __('Contact') }}
     </x-sidebar-nav-link>
     @endauth
