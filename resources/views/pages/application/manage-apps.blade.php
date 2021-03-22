@@ -1,24 +1,6 @@
 <x-app-layout>
     <x-slot name="slot">
         <div class="flex flex-col items-center w-full">
-            <div class="flex flex-row">
-                @error('app_name')
-                <x-error-card>
-                    <p class="text-sm">{{ $message }}</p>
-                </x-error-card>
-                @enderror
-                @error('short_description')
-                <x-error-card>
-                    <p class="text-sm">{{ $message }}</p>
-                </x-error-card>
-                @enderror
-
-                @if (session('success'))
-                <x-success-card>
-                    <p class="text-sm">{{ session('success') }}</p>
-                </x-success-card>
-                @endif
-            </div>
             <div class="min-w-full">
                 <table class="min-w-full table-auto">
                     <thead>
@@ -101,6 +83,24 @@
                         </form>
                     </tbody>
                 </table>
+            </div>
+            <div class="flex flex-row">
+                @error('app_name')
+                <x-error-card>
+                    <p class="text-sm">{{ $message }}</p>
+                </x-error-card>
+                @enderror
+                @error('short_description')
+                <x-error-card>
+                    <p class="text-sm">{{ $message }}</p>
+                </x-error-card>
+                @enderror
+
+                @if (session('success'))
+                <x-success-card>
+                    <p class="text-sm">{{ session('success') }}</p>
+                </x-success-card>
+                @endif
             </div>
         </div>
     </x-slot>

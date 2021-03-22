@@ -7,12 +7,19 @@ use App\Models\Application;
 
 class ApplicationController extends Controller
 {
+    /**
+     * Return the view for managing applications
+     */
     public function ManageApps()
     {
         $apps = Application::all();
         return view('pages.application.manage-apps', compact('apps'));
     }
 
+    /**
+     * Return the view to edit an applicaton
+     *
+     */
     public function EditApp($id)
     {
         $app = Application::find($id);
@@ -21,6 +28,7 @@ class ApplicationController extends Controller
 
     /**
      * This will validate input data and update the application corresponding to the id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function UpdateApp(Request $request, $id)
     {
@@ -45,6 +53,9 @@ class ApplicationController extends Controller
         return Redirect()->route('app_management')->with('success', 'Application\'s information updated with success');
     }
 
+    /**
+     * This will delete permanently an application from the list
+     */
     public function DeleteApp($id)
     {
         $delete = Application::find($id)->delete();
