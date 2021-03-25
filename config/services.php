@@ -30,6 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'tmdb' => [
+        'api' => env('TMDB_API'),
+    ],
+
     'omdb' => [
         'apikey' => env('OMDB_API_KEY'),
         'imdbid' => 'tt3896198',
