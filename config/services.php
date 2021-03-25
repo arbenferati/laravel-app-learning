@@ -30,4 +30,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'omdb' => [
+        'apikey' => env('OMDB_API_KEY'),
+        'imdbid' => 'tt3896198',
+    ],
+
+    'pons' => [
+        'secret' => env('PONS_SECRET'),
+    ],
+
 ];

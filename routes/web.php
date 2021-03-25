@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MovieController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,14 @@ Route::get('/app/edit/{id}', [ApplicationController::class, 'EditApp']);
 Route::post('/app/update/{id}', [ApplicationController::class, 'UpdateApp']);
 Route::get('/app/delete/{id}', [ApplicationController::class, 'DeleteApp']);
 Route::post('/app/add', [ApplicationController::class, 'AddApp'])->name('add_new_app');
+
+/**
+ * Routes about movies application
+ */
+Route::get('/app/movies', [MovieController::class, 'index'])->name('app_movies');
+Route::post('/app/movies', [MovieController::class, 'search'])->name('search_movie');
+
+
 
 Route::get('/contact', function () {
     return view('pages.contact');
