@@ -14,10 +14,9 @@ class MovieController extends Controller
      */
     public function index()
     {
-        $movies = Http::get('https://api.themoviedb.org/3/movie/popular?api_key=' . config('services.tmdb.api'))->json();
-
+        $movies = Http::get('http://api.themoviedb.org/3/movie/popular?api_key=' . config('services.tmdb.api'))->json();
+        
         return view('pages.application.movies.movies', ['movies' => $movies]);
     }
-
 
 }

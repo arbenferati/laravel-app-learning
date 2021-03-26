@@ -34,11 +34,6 @@ return [
         'api' => env('TMDB_API'),
     ],
 
-    'omdb' => [
-        'apikey' => env('OMDB_API_KEY'),
-        'imdbid' => 'tt3896198',
-    ],
-
     'pons' => [
         'secret' => env('PONS_SECRET'),
     ],

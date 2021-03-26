@@ -24,7 +24,7 @@
 
             @include('layouts.partials.sidebar')
 
-            <div class="flex flex-wrap overflow-y-scroll justify-start bg-gray-50 rounded-l-2xl w-full">
+            <div class="flex flex-wrap justify-start bg-gray-50 rounded-l-2xl w-full">
 
                 {{ $slot }}
 
