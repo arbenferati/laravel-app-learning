@@ -29,6 +29,8 @@ Route::post('/app/add', [ApplicationController::class, 'AddApp'])->name('add_new
  * Routes about movies application
  */
 Route::get('/app/movies', [MovieController::class, 'index'])->name('app_movies');
+Route::get('/app/movies/{id}', [MovieController::class, 'single']);
+Route::post('/app/movies/search', [MovieController::class, 'search'])->name('search_movie');
 
 
 

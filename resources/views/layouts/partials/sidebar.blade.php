@@ -1,5 +1,5 @@
-<div class="w-64 flex-none p-2 flex flex-col items-center">
-    
+<div class="hidden lg:w-64 lg:flex-none lg:p-2 lg:flex lg:flex-col lg:items-center lg:visible">
+
     @auth
         <img src="{{ asset('/images/profile.jpg') }}" alt="profile_image" class="rounded-full h-24 border-2 border-indigo-900 shadow-md">
 
