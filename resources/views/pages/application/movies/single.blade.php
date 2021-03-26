@@ -36,7 +36,7 @@
                         </a>
                     </p>
                     <p class="flex flex-col py-2 ">
-                        <span class="mb-2 text-md text-gray-700">Played as : {{ $actor['character'] }}</span>
+                        Played as : <span class="mb-2 text-md text-gray-700">{{ $actor['character'] }}</span>
                     </p>
                 </div>
             </div>
