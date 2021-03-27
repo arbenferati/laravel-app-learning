@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="slot">
         <div class="p-4 flex flex-row items-start">
-            <img class="h-full mb-4 shadow-md rounded-l-2xl border border-r-8 border-gray-900" src="https://image.tmdb.org/t/p/w500/{{ $movie['poster_path'] }}" alt="" srcset="">
+            <img class="w-96 h-full mb-4 shadow-md rounded-l-2xl border border-r-8 border-gray-900" src="https://image.tmdb.org/t/p/w500/{{ $movie['poster_path'] }}" alt="" srcset="">
             <div class="px-8">
                 <div class="mb-4">
                     <h1 class="text-3xl uppercase tracking-widest">
@@ -18,8 +18,18 @@
                 </div>
                 <h2 class="text-lg uppercase text-gray-800 font-semibold">Synopsis</h2>
                 <p class="tracking-wider mt-2">{{ $movie['overview'] }}</p>
+                @php $link = 'test' @endphp
+                <x-button-link :link="$link">
+                    Watch trailer now
+                </x-button-link>
             </div>
-            <img class="h-full mb-4 rounded shadow-xl" src="https://image.tmdb.org/t/p/w500/{{ $movie['backdrop_path'] }}" alt="" srcset="">
+        </div>
+
+        <div class="grid grid-cols-6 gap-8 px-8">
+            <iframe src="https://www.youtube.com/embed/{{ $video[0]['key'] }}" 
+            frameborder="0" class=""
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
         </div>
 
         <h1 class="text-2xl text-gray-900 px-8 pt-8">Casting</h1>
