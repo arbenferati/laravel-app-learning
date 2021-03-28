@@ -39,13 +39,9 @@
         @endisset
 
         @isset($popular)
-        <h1 class="text-2xl text-gray-900 px-8 pt-8">Top rated movies</h1>
+        <h1 class="text-2xl text-gray-900 px-8 pt-8">Latest movie</h1>
         <div class="grid grid-cols-2 lg:grid-cols-8 gap-8 p-8 items-start mt-6">
-            @foreach ($toprated['results'] as $movie)
-                @if ($loop->index < 16)
-                    <x-movie-card :movie="$movie" />
-                @endif
-            @endforeach
+            <x-movie-card :movie="$latest" />
         </div>
 
         <h1 class="text-2xl text-gray-900 px-8 pt-8">Upcoming movies</h1>

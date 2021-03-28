@@ -16,11 +16,11 @@ class MovieController extends Controller
     {
         $popular = Http::get('http://api.themoviedb.org/3/movie/popular?api_key=' . config('services.tmdb.api') . '&language=en-US')->json();
         $upcoming = Http::get('http://api.themoviedb.org/3/movie/upcoming?api_key=' . config('services.tmdb.api') . '&language=en-US')->json();
-        $toprated = Http::get('http://api.themoviedb.org/3/movie/top_rated?api_key=' . config('services.tmdb.api') . '&language=en-US')->json();
+        $latest = Http::get('http://api.themoviedb.org/3/movie/latest?api_key=' . config('services.tmdb.api') . '&language=en-US')->json();
         return view('pages.application.movies.index', [
             'popular' => $popular,
             'upcoming' => $upcoming,
-            'toprated' => $toprated,
+            'latest' => $latest,
         ]);
     }
 
