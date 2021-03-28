@@ -33,6 +33,7 @@ class MovieController extends Controller
     {
         $movie = Http::get('http://api.themoviedb.org/3/movie/' . $id . '?api_key=' . config('services.tmdb.api') . '&language=en-US&append_to_response=videos,images,credits')->json();
         $similar = Http::get('http://api.themoviedb.org/3/movie/' . $id . '/similar?api_key=' . config('services.tmdb.api') . '&language=en-US')->json();
+ 
         return view('pages.application.movies.single', [
             'movie' => $movie,
             'videos' => $movie['videos']['results'],

@@ -18,56 +18,53 @@
                 </div>
                 <h2 class="text-lg uppercase text-gray-800 font-semibold">Synopsis</h2>
                 <p class="tracking-wider mt-2">{{ $movie['overview'] }}</p>
-                @php $link = 'test' @endphp
-                <x-button-link :link="$link">
+                <x-button-link :link="__('/test')">
                     Watch trailer now
                 </x-button-link>
             </div>
         </div>
 
+        <h1 class="text-2xl text-gray-900 px-8 pt-8">Videos</h1>
         <div class="grid grid-cols-6 gap-8 px-8">
-            <iframe src="https://www.youtube.com/embed/{{ $video[0]['key'] }}" 
-            frameborder="0" class=""
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen></iframe>
+            @foreach ($videos as $video)
+                @if ($loop->index < 5)
+                    <div class="p-2 mr-4">
+                        <iframe src="https://www.youtube.com/embed/{{ $video['key'] }}" 
+                        frameborder="1"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen></iframe>
+                    </div>
+                @endif
+            @endforeach
         </div>
 
         <h1 class="text-2xl text-gray-900 px-8 pt-8">Casting</h1>
-        <div class="grid grid-cols-2 lg:grid-cols-8 gap-8 p-8 items-start">
+        <div class="grid grid-cols-2 lg:grid-cols-6 gap-8 p-8 items-start">
             @foreach ($credits['cast'] as $actor)
-            <div class="mt-2 rounded-t-xl overflow-hidden shadow">
-                <a href="{{ url('/app/movies/actors' . '/' . $actor['id']) }}">
-                    <img class="h-full hover:opacity-80 transition" src="https://image.tmdb.org/t/p/w500/{{ $actor['profile_path'] }} " alt="" srcset="">
-                </a>
-                <div class="p-4">
-                    <p class="text-lg font-semibold truncate">
+                @if ($loop->index < 6)
+                    <div class="mt-2 rounded-t-xl overflow-hidden shadow">
                         <a href="{{ url('/app/movies/actors' . '/' . $actor['id']) }}">
-                            {{ $actor['name'] }}
+                            @if ($actor['profile_path'] == null)
+                                <img class="h-full hover:opacity-80 transition" src="{{ asset('/images/noimage.png') }} ">
+                            @else
+                                <img class="h-full hover:opacity-80 transition" src="https://image.tmdb.org/t/p/w500/{{ $actor['profile_path'] }} ">
+                            @endif
                         </a>
-                    </p>
-                    <p class="flex flex-col py-2 ">
-                        Played as : <span class="mb-2 text-md text-gray-700">{{ $actor['character'] }}</span>
-                    </p>
-                </div>
-            </div>
+                        <div class="p-4">
+                            <p class="text-lg font-semibold truncate"> <a href="{{ url('/app/movies/actors' . '/' . $actor['id']) }}"> {{ $actor['name'] }} </a> </p>
+                            <p class="flex flex-col py-2 "> Played as : <span class="mb-2 text-md text-gray-700">{{ $actor['character'] }}</span> </p>
+                        </div>
+                    </div>
+                @endif
             @endforeach
         </div>
         @if (count($similar['results']) > 0)
         <h1 class="text-2xl text-gray-900 px-8 pt-8">Similar movies</h1>
-        <div class="grid grid-cols-2 lg:grid-cols-8 gap-8 p-8 items-start">
+        <div class="grid grid-cols-2 lg:grid-cols-5 gap-8 p-8 items-start">
             @foreach ($similar['results'] as $similar_movie)
-            <div class="mt-2 rounded-t-xl overflow-hidden shadow">
-                <a href="{{ url('/app/movies' . '/' . $similar_movie['id']) }}">
-                    <img class="h-full hover:opacity-80 transition" src="https://image.tmdb.org/t/p/w500/{{ $similar_movie['poster_path'] }} " alt="" srcset="">
-                </a>
-                <div class="p-4">
-                    <p class="text-lg font-semibold truncate"><a href="{{ url('/app/movies' . '/' . $similar_movie['id']) }}">{{ $similar_movie['title'] }}</a></p>
-                    <p class="flex flex-col py-2 ">
-                        <span class="mb-2 text-xs text-gray-500">{{ Carbon\Carbon::parse($similar_movie['release_date'])->format('M d, Y') }}</span>
-                        <span class="font-semibold">{{ $similar_movie['vote_average'] }}/10 <span class="text-xs">({{ $similar_movie['vote_count'] }} votes)</span></span>
-                    </p>
-                </div>
-            </div>
+                @if ($loop->index < 5)
+                    <x-movie-card :movie="$similar_movie" />
+                @endif
             @endforeach
         </div>
         @endif
