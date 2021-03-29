@@ -35,9 +35,9 @@ Afin de pouvoir executé le code dans votre machine vous avez quelque pré-requi
 
 ### Mise en fonction
 
-Afin de pouvoir tester l'application, il vous faut la cloner depuis mon répertoire [github](https://github.com/arbenferati/laravel-app-learning.git).
+Afin de pouvoir tester l'application, il vous faut la cloner depuis mon répertoire [github](https://github.com/arbenferati/my-apps.git).
 
-    git clone https://github.com/arbenferati/laravel-app-learning.git
+    git clone https://github.com/arbenferati/my-apps.git
 
 Une fois le dépôt cloner, vous vous rendez dedans puis vous lancer composer afin d'installer les dépendances.
 
