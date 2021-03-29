@@ -22,12 +22,11 @@ class ApplicationFactory extends Factory
      */
     public function definition()
     {
-        $a = $this->faker->unique()->word(3);
         return [
-            'app_name' => $a,
+            'app_name' => 'movies',
             'short_description' => $this->faker->word(7),
             'body' => $this->faker->paragraph(4),
-            'route' => $a,
+            'route' => 'movies',
         ];
     }
 }
